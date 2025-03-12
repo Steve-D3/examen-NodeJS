@@ -1,73 +1,24 @@
-# Node, Express and TypeScript Project Template
+# 🚀 Snippet Management System
 
-Welcome to the **Node, Express and TypeScript Project Template**! This repository serves as a starter template for building Node.js applications with TypeScript. It comes pre-configured with models, controllers, routes, and bundling, so you can focus on building your application.
+Dit is een **Snippet Management System** waarmee gebruikers **code snippets kunnen toevoegen, bekijken en filteren** op programmeertaal en tags.  
+De applicatie is gebouwd met **Node.js, Express, EJS en MongoDB**.  
 
-## Features
-
-- **TypeScript**: Strongly typed language for writing robust and maintainable code.
-- **Project Structure**: Organized folder structure with models, controllers, and routes.
-- **Bundling pkgroll**: Pre-configured with a bundler for efficient builds.
-- **TSX**: For automatic server restarts an running typescript during development.
-- **Dependency Management**: Configured with npm.
-
-## Project Structure
-
-```
-├── src
-│   ├── controllers
-│   │   └── exampleController.ts
-│   ├── middleware
-│   │   └── exampleMiddleware.ts
-│   ├── models
-│   │   └── exampleModel.ts
-│   ├── routes
-│   │   └── exampleRoutes.ts
-│   └── server.ts    // Main entry point of the application
-├── dist             // Compiled output (auto-generated)
-├── package.json     // Project dependencies and scripts
-├──.gitignore        // Ignore files to github
-├── tsconfig.json    // TypeScript configuration
-└── README.md        // Project documentation
-```
-
-## Getting Started
-
-### 1. Start Development Server
-
-Run the development server with hot-reloading:
-
-```bash
-npm run dev
-```
-
-### 2. Build the Project
-
-Compile TypeScript files to JavaScript:
-
-```bash
-npm run build
-```
-
-### 3. Start the Production Server
-
-After building the project, start the server:
-
-```bash
-npm start
-```
-
-## Scripts
-
-- `dev`: Starts the development server with hot-reloading.
-- `build`: Compiles the TypeScript source code to JavaScript.
-- `start`: Starts the production server.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+## 📌 Functies  
+✅ Toevoegen van nieuwe code snippets  
+✅ Weergeven van een lijst met snippets  
+✅ Filtering op **programmeertaal** en **tags**  
+✅ Snippets verwijderen uit de database  
+✅ EJS-template engine voor dynamische pagina’s  
 
 ---
 
-Happy coding! 🎉
+## ⚡ Installatie  
 
-UGnqvkrOjDl9TmCD
+### 1️⃣ **Clone de repository**
+```sh
+git clone https://github.com/jouw-gebruikersnaam/snippet-management.git
+cd snippet-management
+npm install
+
+MONGO_URI_LIVE=mongodb+srv://<user>:<password>@cluster.mongodb.net/myDatabase
+PORT=3000
