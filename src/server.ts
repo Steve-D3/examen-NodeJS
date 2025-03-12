@@ -2,8 +2,9 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
+import { Request, Response } from "express";
 import { notFound } from "./controllers/notFoundController";
-
+import Snippet from "./models/snippets.model"
 import { helloMiddleware } from "./middleware/exampleMiddleware";
 import mongoose from "mongoose";
 
@@ -17,18 +18,25 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use("/api", snippetRoutes)
-app.all("*", notFound);
-
-
 // EJS
 app.set("view engine", "ejs");
 app.set("views", "src/views");
 app.use(express.static("src/public"))
 
+app.get("/", async (req, res) => {
+  const snippets = await Snippet.find();
+  res.render("index", { 
+    title: "Admin view",
+    snippets,
+  });
+})
 
 // -----------------------------------------
+// Routes
+app.use("/api", snippetRoutes)
+app.all("*", notFound);
+
+
 
 // Database connection
 try {

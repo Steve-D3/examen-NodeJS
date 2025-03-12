@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+    <title>Management System</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <table id="contentTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>Language</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% snippets.forEach((snippet)=>{ %>
+                <tr>
+                    <td><%- snippet.title %></td>
+                    <td><code><%- snippet.code %></code></td>
+                    <td><%- snippet.language %></td>
+                    <td><%- snippet.tags %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

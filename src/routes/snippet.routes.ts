@@ -10,11 +10,11 @@ import {
 const router = express.Router();
 
 router
-.post('/', createSnippet)
-.get('/', getSnippets)
-.get('/:id', getSnippetById)
-.put('/:id', updateSnippet)
-.delete('/:id', deleteSnippet);
+.post('/snippets', createSnippet)
+.get('/snippets', getSnippets)
+.get('/snippets/:id', getSnippetById)
+.put('/snippets/:id', updateSnippet)
+.delete('/snippets/:id', deleteSnippet);
 
 
 export default router;
