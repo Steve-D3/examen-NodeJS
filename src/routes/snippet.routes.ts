@@ -4,8 +4,9 @@ import {
     getSnippets,
     getSnippetById,
     updateSnippet,
-    deleteSnippet 
+    deleteSnippet,
 } from '../controllers/snippet.controller';
+import { get } from 'http';
 
 const router = express.Router();
 

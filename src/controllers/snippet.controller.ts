@@ -29,7 +29,7 @@ export const createSnippet = async (req: Request, res: Response) => {
 export const getSnippets = async (req: Request, res: Response) => {
   try {
     const { language, tags, page = 1, limit = 10, sort = "createdAt", order = "desc" } = req.query;
-    
+
     let query: any = {};
 
     if (language) query.language = new RegExp(`^${language}$`, "i");

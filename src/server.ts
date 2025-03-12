@@ -2,13 +2,10 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { Request, Response } from "express";
 import { notFound } from "./controllers/notFoundController";
 import Snippet from "./models/snippets.model"
-import { helloMiddleware } from "./middleware/exampleMiddleware";
 import mongoose from "mongoose";
 
-import dashboardRoutes from "./routes/dashboard.routes";
 import snippetRoutes from "./routes/snippet.routes"
 
 // Variables
@@ -25,16 +22,29 @@ app.set("views", "src/views");
 app.use(express.static("src/public"))
 
 app.get("/", async (req, res) => {
-  const snippets = await Snippet.find();
-  res.render("index", { 
-    title: "Admin view",
-    snippets,
-  });
+  try {
+    const { language, tags } = req.query;
+    let query: any = {};
+
+    if (language) query.language = new RegExp(`^${language}$`, "i");
+    if (tags) query.tags = { $all: (tags as string).split(",") };
+
+    const snippets = await Snippet.find(query);
+
+    res.render("index", {
+      title: "Admin View",
+      snippets,
+      language,
+      tags
+    });
+  } catch (error) {
+    console.error("Fout bij ophalen van snippets:", error);
+    res.status(500).send("Serverfout bij ophalen van snippets");
+  }
 })
 
 // -----------------------------------------
 // Routes
-app.use("/", dashboardRoutes)
 app.use("/api", snippetRoutes)
 app.all("*", notFound);
 
@@ -42,7 +52,7 @@ app.all("*", notFound);
 
 // Database connection
 try {
-  await mongoose.connect(process.env.MONGO_URI!);
+  await mongoose.connect(process.env.MONGO_URI_LIVE!);
   console.log("Database connection OK");
 } catch (err) {
   console.error(err);

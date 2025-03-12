@@ -13,14 +13,15 @@
     <div class="container">
         <h1><%= title %></h1>
 
-        <form method="GET">
+        <form action="/" method="GET">
             <label for="language">Filter op taal:</label>
-            <input type="text" name="language" placeholder="JavaScript">
+            <input type="text" name="language" placeholder="JavaScript" value="<%= language || '' %>">
             
             <label for="tags">Filter op tags:</label>
-            <input type="text" name="tags" placeholder="async,fetch">
+            <input type="text" name="tags" placeholder="async,fetch" value="<%= tags || '' %>">
             
             <button type="submit">Filter</button>
+            <button type="button" id="resetFilter">Reset</button>
         </form>
 
         <table id="contentTable">
