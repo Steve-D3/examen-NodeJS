@@ -21,6 +21,15 @@ app.use(express.json());
 app.use("/api", snippetRoutes)
 app.all("*", notFound);
 
+
+// EJS
+app.set("view engine", "ejs");
+app.set("views", "src/views");
+app.use(express.static("src/public"))
+
+
+// -----------------------------------------
+
 // Database connection
 try {
   await mongoose.connect(process.env.MONGO_URI!);
