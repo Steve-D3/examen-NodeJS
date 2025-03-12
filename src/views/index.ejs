@@ -12,6 +12,17 @@
 <body>
     <div class="container">
         <h1><%= title %></h1>
+
+        <form method="GET">
+            <label for="language">Filter op taal:</label>
+            <input type="text" name="language" placeholder="JavaScript">
+            
+            <label for="tags">Filter op tags:</label>
+            <input type="text" name="tags" placeholder="async,fetch">
+            
+            <button type="submit">Filter</button>
+        </form>
+
         <table id="contentTable">
             <thead>
                 <tr>
@@ -25,9 +36,9 @@
                 <% snippets.forEach((snippet)=>{ %>
                 <tr>
                     <td><%- snippet.title %></td>
-                    <td><code><%- snippet.code %></code></td>
+                    <td><pre><%= snippet.code %></pre></td>
                     <td><%- snippet.language %></td>
-                    <td><%- snippet.tags %></td>
+                    <td><%- snippet.tags.join(", ") %></td>
                 </tr>
                 <% }); %>
             </tbody>

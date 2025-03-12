@@ -8,6 +8,7 @@ import Snippet from "./models/snippets.model"
 import { helloMiddleware } from "./middleware/exampleMiddleware";
 import mongoose from "mongoose";
 
+import dashboardRoutes from "./routes/dashboard.routes";
 import snippetRoutes from "./routes/snippet.routes"
 
 // Variables
@@ -33,6 +34,7 @@ app.get("/", async (req, res) => {
 
 // -----------------------------------------
 // Routes
+app.use("/", dashboardRoutes)
 app.use("/api", snippetRoutes)
 app.all("*", notFound);
 
