@@ -1,4 +1,4 @@
-import mongoose = require('mongoose');
+import mongoose from 'mongoose';
 import { SnippetType } from '../types'; 
 
 const snippetSchema = new mongoose.Schema<SnippetType>({
@@ -18,14 +18,17 @@ const snippetSchema = new mongoose.Schema<SnippetType>({
         type: [String],
         default: []
     },
-    expiresIn: {
-        type: Number,
+    createdAt: {
+        type: Date,
+        default: null
+    },
+    updatedAt: {
+        type: Date,
         default: null
     }
 },
     { timestamps: true }
 );
-
-// snippetSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });   
+  
 
 export default mongoose.model('Snippet', snippetSchema);

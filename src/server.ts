@@ -3,9 +3,11 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { notFound } from "./controllers/notFoundController";
-import testRoutes from "./routes/exampleRoutes";
+
 import { helloMiddleware } from "./middleware/exampleMiddleware";
 import mongoose from "mongoose";
+
+import snippetRoutes from "./routes/snippet.routes"
 
 // Variables
 const app = express();
@@ -16,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api", helloMiddleware, testRoutes);
+app.use("/api", snippetRoutes)
 app.all("*", notFound);
 
 // Database connection

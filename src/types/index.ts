@@ -3,5 +3,6 @@ export interface SnippetType {
     code:      string;
     language:  string;
     tags:      string[];
-    expiresIn: number;
+    createdAt: Date;
+    updatedAt: Date;
 }
